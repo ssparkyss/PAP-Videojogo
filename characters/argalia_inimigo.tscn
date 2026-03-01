@@ -1,0 +1,286 @@
+[gd_scene load_steps=17 format=3 uid="uid://c0errvp8ln83y"]
+
+[ext_resource type="Script" uid="uid://dk5wyphbar3ta" path="res://characters/argalia_inimigo.gd" id="1_dqjer"]
+[ext_resource type="AudioStream" uid="uid://dqdqsdgnyc05o" path="res://assets/sounds/sfx/Hitsound 2.mp3" id="1_nxb0n"]
+[ext_resource type="Texture2D" uid="uid://wim3wtk3jxi5" path="res://assets/sprites/Argalia Inimigo/Argalia GeneralSheet.png" id="1_xqdsn"]
+[ext_resource type="Texture2D" uid="uid://cp0usmat402f0" path="res://assets/sprites/Argalia Inimigo/Argalia FoiceSheet.png" id="3_t7lsd"]
+
+[sub_resource type="Animation" id="Animation_kngkt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(1, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_r8ugn"]
+resource_name = "idle"
+length = 0.7
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(5, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c6hgb"]
+resource_name = "look_left"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0, 0),
+"update": 0,
+"values": [Vector2(-1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dqjer"]
+resource_name = "look_right"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0, 0),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(-1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_t7lsd"]
+resource_name = "walk"
+length = 0.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c6hgb"]
+_data = {
+&"RESET": SubResource("Animation_kngkt"),
+&"idle": SubResource("Animation_r8ugn"),
+&"look_left": SubResource("Animation_c6hgb"),
+&"look_right": SubResource("Animation_dqjer"),
+&"walk": SubResource("Animation_t7lsd")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqdsn"]
+size = Vector2(65.5, 49)
+
+[sub_resource type="Animation" id="Animation_4mk0o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FoiceHitbox/FoiceSlashes:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FoiceHitbox/FoicePierce:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_te3f5"]
+resource_name = "attack"
+length = 1.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.29999998, 0.45, 0.55, 0.7, 0.8, 0.84999996, 0.95, 1.0999999),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FoiceHitbox/FoiceSlashes:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.4, 0.45000002, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FoiceHitbox/FoicePierce:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_coiev"]
+_data = {
+&"RESET": SubResource("Animation_4mk0o"),
+&"attack": SubResource("Animation_te3f5")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqjer"]
+size = Vector2(13, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7lsd"]
+size = Vector2(11, 16)
+
+[node name="ArgaliaInimigo" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_dqjer")
+
+[node name="ArgaliaSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_xqdsn")
+hframes = 6
+vframes = 3
+
+[node name="ArgaliaAnimation" type="AnimationPlayer" parent="ArgaliaSprite"]
+libraries = {
+&"": SubResource("AnimationLibrary_c6hgb")
+}
+autoplay = "walk"
+
+[node name="ArgaliaVisao" type="Area2D" parent="ArgaliaSprite"]
+position = Vector2(20, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArgaliaSprite/ArgaliaVisao"]
+position = Vector2(-60, 0)
+shape = SubResource("RectangleShape2D_xqdsn")
+
+[node name="ArgaliaFoice" type="Sprite2D" parent="ArgaliaSprite"]
+z_index = -1
+position = Vector2(-39.000008, 1.9999981)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_t7lsd")
+hframes = 11
+
+[node name="FoiceHitbox" type="Area2D" parent="ArgaliaSprite/ArgaliaFoice" groups=["Hitbox"]]
+position = Vector2(20, 0)
+
+[node name="FoiceSlashes" type="CollisionPolygon2D" parent="ArgaliaSprite/ArgaliaFoice/FoiceHitbox"]
+position = Vector2(28.750008, -2.4999974)
+scale = Vector2(1.2499999, 1.2499999)
+polygon = PackedVector2Array(-7.999998, -51, -74, -3, -4.999998, 49, -7.999998, -1.1920929e-07, -6.999998, -51)
+disabled = true
+
+[node name="FoicePierce" type="CollisionPolygon2D" parent="ArgaliaSprite/ArgaliaFoice/FoiceHitbox"]
+polygon = PackedVector2Array(20.000008, -54.999992, -83.749985, -4.999997, 22.500008, 43.75, 17.500008, -6.249997)
+disabled = true
+
+[node name="FoiceAnimation" type="AnimationPlayer" parent="ArgaliaSprite/ArgaliaFoice"]
+libraries = {
+&"": SubResource("AnimationLibrary_coiev")
+}
+
+[node name="ArgaliaBody" type="CollisionShape2D" parent="." groups=["enemy"]]
+position = Vector2(0.5, 6.5)
+shape = SubResource("RectangleShape2D_dqjer")
+
+[node name="ArgaliaHurtbox" type="Area2D" parent="." groups=["Hurtbox"]]
+position = Vector2(-20, 0)
+
+[node name="ArgaliaHurtbox" type="CollisionShape2D" parent="ArgaliaHurtbox"]
+position = Vector2(20.5, 6)
+shape = SubResource("RectangleShape2D_t7lsd")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_nxb0n")
+bus = &"SFX"
+
+[connection signal="area_entered" from="ArgaliaSprite/ArgaliaVisao" to="." method="_on_argalia_visao_area_entered"]
+[connection signal="area_exited" from="ArgaliaSprite/ArgaliaVisao" to="." method="_on_argalia_visao_area_exited"]
+[connection signal="area_entered" from="ArgaliaHurtbox" to="." method="_on_argalia_hurtbox_area_entered"]
