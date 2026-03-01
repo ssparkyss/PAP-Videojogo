@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cmbex80db17st"
+path="res://.godot/imported/library ruins (battle).mp3-775eac5e8b524e6b356b301d18bcb63c.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/music/library ruins (battle).mp3"
+dest_files=["res://.godot/imported/library ruins (battle).mp3-775eac5e8b524e6b356b301d18bcb63c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
