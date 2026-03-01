@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7j6ya08sqtk4"]
+
+[ext_resource type="Texture2D" uid="uid://0gxcd2grepmc" path="res://assets/UI/SelecionarNivel/Selecionar Nivel Default.png" id="1_a04ps"]
+[ext_resource type="Script" uid="uid://d2d8o6aj8v0ye" path="res://scenes/level_select_button.gd" id="1_kloqe"]
+[ext_resource type="Texture2D" uid="uid://b6k8lrr6rnemf" path="res://assets/UI/SelecionarNivel/Selecionar Nivel Press.png" id="2_q0k5o"]
+[ext_resource type="Texture2D" uid="uid://dn6kdbjkkt3ie" path="res://assets/UI/SelecionarNivel/Selecionar Nivel Hover.png" id="3_tfehh"]
+[ext_resource type="AudioStream" uid="uid://b31yqy33gi3np" path="res://assets/sounds/sfx/Menu Select.mp3" id="5_q0k5o"]
+
+[node name="level_select_button" type="TextureButton"]
+texture_filter = 1
+offset_right = 150.0
+offset_bottom = 150.0
+texture_normal = ExtResource("1_a04ps")
+texture_pressed = ExtResource("2_q0k5o")
+texture_hover = ExtResource("3_tfehh")
+stretch_mode = 6
+script = ExtResource("1_kloqe")
+
+[node name="MenuSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_q0k5o")
+bus = &"SFX"
