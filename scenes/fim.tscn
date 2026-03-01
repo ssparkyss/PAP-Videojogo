@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://nxtldvukfsf3"]
+
+[ext_resource type="Script" uid="uid://51f52j6eyrwm" path="res://scenes/fim.gd" id="1_cwp4m"]
+[ext_resource type="Texture2D" uid="uid://drxyxa8dubcge" path="res://assets/background/MenuBG.png" id="1_wrqqw"]
+[ext_resource type="Texture2D" uid="uid://bkkwao45hf6u7" path="res://assets/sprites/Bruxa/Bruxa Profile.png" id="2_cwp4m"]
+[ext_resource type="Texture2D" uid="uid://bck8a7jher5y3" path="res://assets/background/Fim.png" id="3_6qkjj"]
+[ext_resource type="Texture2D" uid="uid://ct46iwb7i5ii2" path="res://assets/UI/butões/Voltar/Voltar Default.png" id="4_tykr8"]
+[ext_resource type="Texture2D" uid="uid://bq0v2yypssiaf" path="res://assets/UI/butões/Voltar/Voltar Press.png" id="5_x14ae"]
+[ext_resource type="Texture2D" uid="uid://bnrbk31wx1b1l" path="res://assets/UI/butões/Voltar/Voltar Hover.png" id="6_mta81"]
+[ext_resource type="AudioStream" uid="uid://b31yqy33gi3np" path="res://assets/sounds/sfx/Menu Select.mp3" id="8_6qkjj"]
+[ext_resource type="AudioStream" uid="uid://gcvh8tlsuuk8" path="res://assets/sounds/music/new horizons.mp3" id="9_x14ae"]
+[ext_resource type="AudioStream" uid="uid://drixdmr8r2shw" path="res://assets/sounds/sfx/_Yippee_ Sound Effect 4.mp3" id="10_mta81"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_n4sav"]
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_57f71"]
+resource_local_to_scene = true
+events = [SubResource("InputEventKey_n4sav")]
+
+[node name="fim" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_cwp4m")
+
+[node name="MenuBG" type="TextureRect" parent="."]
+z_index = -4096
+texture_filter = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_wrqqw")
+
+[node name="BruxaProfile" type="Sprite2D" parent="."]
+position = Vector2(431.00003, 576)
+scale = Vector2(12, 12)
+texture = ExtResource("2_cwp4m")
+
+[node name="Fim" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1295, 278.00003)
+scale = Vector2(20, 20)
+texture = ExtResource("3_6qkjj")
+
+[node name="BackButton" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 1635.0
+offset_top = 934.0
+offset_right = 1675.0
+offset_bottom = 966.0
+scale = Vector2(4.5, 4.5)
+shortcut = SubResource("Shortcut_57f71")
+texture_normal = ExtResource("4_tykr8")
+texture_pressed = ExtResource("5_x14ae")
+texture_hover = ExtResource("6_mta81")
+
+[node name="MenuSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_6qkjj")
+bus = &"SFX"
+
+[node name="MusicLPayerFim" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_x14ae")
+autoplay = true
+parameters/looping = true
+
+[node name="YIPPEE" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_mta81")
+autoplay = true
+
+[node name="Creditos" type="Label" parent="."]
+texture_filter = 1
+offset_left = 1217.0
+offset_top = 575.0
+offset_right = 1750.0
+offset_bottom = 832.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "Creditos:
+Programação: Rafael Duarte
+Arte/Animações: Rafael Duarte
+Musica: AZALI
+Efeitos Sonoros: OmegaPixelArt"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
