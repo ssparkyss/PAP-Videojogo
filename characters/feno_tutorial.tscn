@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxsv4wbccr5rx"]
+
+[ext_resource type="Script" uid="uid://de0jc6k5tusn2" path="res://characters/feno_tutorial.gd" id="1_epeux"]
+[ext_resource type="Texture2D" uid="uid://tddoe52sq38a" path="res://assets/sprites/FenoTutorial/FenoTutorial Sprite-sheet.png" id="2_duu22"]
+[ext_resource type="AudioStream" uid="uid://dqdqsdgnyc05o" path="res://assets/sounds/sfx/Hitsound 2.mp3" id="3_duu22"]
+
+[sub_resource type="Animation" id="Animation_gpekt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vxiw0"]
+resource_name = "take_damage"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rr6i3"]
+_data = {
+&"RESET": SubResource("Animation_gpekt"),
+&"take_damage": SubResource("Animation_vxiw0")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txube"]
+size = Vector2(13, 22.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epeux"]
+size = Vector2(11, 21)
+
+[node name="FenoTutorial" type="CharacterBody2D"]
+script = ExtResource("1_epeux")
+
+[node name="FenoSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_duu22")
+hframes = 2
+
+[node name="FenoAnimation" type="AnimationPlayer" parent="FenoSprite"]
+libraries = {
+&"": SubResource("AnimationLibrary_rr6i3")
+}
+
+[node name="FenoBody" type="CollisionShape2D" parent="." groups=["enemy"]]
+position = Vector2(-0.5, 5.25)
+shape = SubResource("RectangleShape2D_txube")
+
+[node name="FenoHurtbox" type="Area2D" parent="." groups=["Hurtbox"]]
+
+[node name="FenoHurtbox" type="CollisionShape2D" parent="FenoHurtbox"]
+position = Vector2(-0.5, 5.5)
+shape = SubResource("RectangleShape2D_epeux")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_duu22")
+bus = &"SFX"
+
+[connection signal="area_entered" from="FenoHurtbox" to="." method="_on_feno_hurtbox_area_entered"]

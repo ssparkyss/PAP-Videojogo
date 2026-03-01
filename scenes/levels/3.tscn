@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://ci4wo0f8wi6jb"]
+
+[ext_resource type="Script" uid="uid://bhovjmc3561b" path="res://scenes/levels/level_3.gd" id="1_sc0rx"]
+[ext_resource type="PackedScene" uid="uid://b0gb8rugtnan5" path="res://characters/main_character.tscn" id="2_2n3hm"]
+[ext_resource type="PackedScene" uid="uid://c0errvp8ln83y" path="res://characters/argalia_inimigo.tscn" id="3_s5tjy"]
+[ext_resource type="Texture2D" uid="uid://bpdxkr5hhp2qq" path="res://assets/background/Arena1.png" id="4_si25r"]
+[ext_resource type="PackedScene" uid="uid://gv1qkjaov4i1" path="res://scenes/level_finish_orb.tscn" id="5_bg5fu"]
+[ext_resource type="AudioStream" uid="uid://h7bw2y42v5se" path="res://assets/sounds/sfx/Death Sound 4.mp3" id="6_y87mq"]
+[ext_resource type="AudioStream" uid="uid://cqm7hyiar7knp" path="res://assets/sounds/music/BATTLE UNDER A BROKEN SKY EXTENDED.mp3" id="7_2n3hm"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_4o7q8"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_ki155"]
+events = [SubResource("InputEventKey_4o7q8")]
+
+[node name="level3" type="Node2D"]
+script = ExtResource("1_sc0rx")
+
+[node name="MainCharacter" parent="." instance=ExtResource("2_2n3hm")]
+z_index = 4096
+position = Vector2(367, 533)
+scale = Vector2(8, 8)
+
+[node name="ArgaliaInimigo" parent="." instance=ExtResource("3_s5tjy")]
+position = Vector2(1749, 595)
+scale = Vector2(8, 8)
+
+[node name="Arena1" type="Sprite2D" parent="."]
+z_index = -4096
+texture_filter = 1
+position = Vector2(960, 540)
+scale = Vector2(12, 11.481)
+texture = ExtResource("4_si25r")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-576, 1183, -408, 1183, -408, 1160, -492, 1068, -492, 747, -409, 666, -408, 633, -517, 620, -516, 575, -313, 562, -313, 540, -396, 448, -396, 241, -97, 242, -84, 219, 0, 217, 12, 241, 791, 241, 840, 207, 875, 208, 925, 239, 1008, 241, 1020, 219, 1151, 218, 1152, 240, 1511, 241, 1511, 220, 1536, 219, 1548, 241, 2316, 242, 2315, 446, 2232, 540, 2232, 562, 2437, 575, 2436, 619, 2293, 632, 2292, 654, 2376, 746, 2376, 1067, 2292, 1160, 2293, 1183, 2496, 1183, 2496, -195, -576, -194)
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(0.00024414063, -211.90302)
+scale = Vector2(1, 1.183593)
+polygon = PackedVector2Array(-572, 1165.2574, -572, 1257.2574, -252.00024, 1257.1069, 2494.9998, 1255.4171, 2495.9998, 1165.0144, 2534.9998, 1181.9121, 2518.9998, 1346.6648, 755.99976, 1356.8033, -593.00024, 1371.1665, -591.00024, 1171.7736)
+metadata/_edit_lock_ = true
+
+[node name="LevelFinishOrb" parent="." instance=ExtResource("5_bg5fu")]
+visible = false
+position = Vector2(967, 288)
+
+[node name="Morte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_y87mq")
+volume_db = 5.0
+
+[node name="BackButton" type="Button" parent="."]
+z_index = -4096
+offset_left = -41.0
+offset_top = -150.0
+offset_right = -33.0
+offset_bottom = -142.0
+shortcut = SubResource("Shortcut_ki155")
+
+[node name="MusicPlayerLVL3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_2n3hm")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[connection signal="tree_exited" from="ArgaliaInimigo" to="." method="_on_argalia_inimigo_tree_exited"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
