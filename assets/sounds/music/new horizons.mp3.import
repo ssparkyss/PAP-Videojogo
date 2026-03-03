@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://gcvh8tlsuuk8"
+path="res://.godot/imported/new horizons.mp3-e0f6d5b11791fb71bd5fe02a56e2a95b.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/music/new horizons.mp3"
+dest_files=["res://.godot/imported/new horizons.mp3-e0f6d5b11791fb71bd5fe02a56e2a95b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

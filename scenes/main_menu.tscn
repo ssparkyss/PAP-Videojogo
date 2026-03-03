@@ -1,0 +1,184 @@
+[gd_scene load_steps=21 format=3 uid="uid://bnt0jenu270xp"]
+
+[ext_resource type="Script" uid="uid://dfwbrwsghxfxp" path="res://scenes/main_menu.gd" id="1_06t4h"]
+[ext_resource type="Texture2D" uid="uid://drxyxa8dubcge" path="res://assets/background/MenuBG.png" id="2_j7ex8"]
+[ext_resource type="Texture2D" uid="uid://qg22y7ffh7bk" path="res://assets/background/Logo.png" id="3_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://bv8x4ff1clw6r" path="res://assets/UI/butões/Jogar/Jogar Default.png" id="4_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://bxaktct7dj2so" path="res://assets/UI/butões/Jogar/Jogar Press.png" id="5_oa1go"]
+[ext_resource type="Texture2D" uid="uid://bxewk334x6ej7" path="res://assets/UI/butões/Jogar/Jogar Hover.png" id="6_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://b2eyk2ghorx8v" path="res://assets/UI/butões/Definições/Definicoes Default.png" id="7_flqon"]
+[ext_resource type="Texture2D" uid="uid://ct46iwb7i5ii2" path="res://assets/UI/butões/Voltar/Voltar Default.png" id="7_jk1qb"]
+[ext_resource type="Texture2D" uid="uid://bq0v2yypssiaf" path="res://assets/UI/butões/Voltar/Voltar Press.png" id="8_5dd4i"]
+[ext_resource type="Texture2D" uid="uid://can3rk4t7ykhq" path="res://assets/UI/butões/Definições/Definicoes Press.png" id="8_rcqid"]
+[ext_resource type="Texture2D" uid="uid://1yjmac5ksir" path="res://assets/UI/butões/Definições/Definicoes Hover.png" id="9_1ajci"]
+[ext_resource type="Texture2D" uid="uid://bnrbk31wx1b1l" path="res://assets/UI/butões/Voltar/Voltar Hover.png" id="9_lgwnu"]
+[ext_resource type="Texture2D" uid="uid://c7j5hgytqe188" path="res://assets/UI/butões/Sair/Sair Default.png" id="10_7b55j"]
+[ext_resource type="Texture2D" uid="uid://bdpky1o8bcd53" path="res://assets/UI/butões/Sair/Sair Press.png" id="11_5pajh"]
+[ext_resource type="Texture2D" uid="uid://bvnumbpwhyx4u" path="res://assets/UI/butões/Sair/Sair Hover.png" id="12_j7ex8"]
+[ext_resource type="AudioStream" uid="uid://clat14ttwu2i2" path="res://assets/sounds/music/Sea Waves - Sound Effect 4.mp3" id="16_j7ex8"]
+[ext_resource type="AudioStream" uid="uid://b31yqy33gi3np" path="res://assets/sounds/sfx/Menu Select.mp3" id="17_j7ex8"]
+
+[sub_resource type="Theme" id="Theme_7vrkn"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_7b55j"]
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_5pajh"]
+events = [SubResource("InputEventKey_7b55j")]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_06t4h")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -4096
+texture_filter = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_j7ex8")
+
+[node name="Logo" type="Sprite2D" parent="."]
+z_index = -4095
+texture_filter = 1
+position = Vector2(734, 318)
+scale = Vector2(16, 16)
+texture = ExtResource("3_fu7sn")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+texture_filter = 1
+offset_left = 1290.0
+offset_top = 401.0
+offset_right = 1924.0
+offset_bottom = 1091.0
+theme = SubResource("Theme_7vrkn")
+
+[node name="MainButtons" type="VBoxContainer" parent="CenterContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(280, 200)
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="play" type="TextureButton" parent="CenterContainer/MainButtons"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("4_rtw2f")
+texture_pressed = ExtResource("5_oa1go")
+texture_hover = ExtResource("6_tbmy8")
+stretch_mode = 6
+
+[node name="settings" type="TextureButton" parent="CenterContainer/MainButtons"]
+custom_minimum_size = Vector2(100, 210)
+layout_mode = 2
+texture_normal = ExtResource("7_flqon")
+texture_pressed = ExtResource("8_rcqid")
+texture_hover = ExtResource("9_1ajci")
+stretch_mode = 0
+
+[node name="quit" type="TextureButton" parent="CenterContainer/MainButtons"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+texture_normal = ExtResource("10_7b55j")
+texture_pressed = ExtResource("11_5pajh")
+texture_hover = ExtResource("12_j7ex8")
+stretch_mode = 6
+
+[node name="SettingsMenu" type="VBoxContainer" parent="CenterContainer"]
+visible = false
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/separation = 17
+
+[node name="back" type="TextureButton" parent="CenterContainer/SettingsMenu"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+shortcut = SubResource("Shortcut_5pajh")
+texture_normal = ExtResource("7_jk1qb")
+texture_pressed = ExtResource("8_5dd4i")
+texture_hover = ExtResource("9_lgwnu")
+stretch_mode = 5
+
+[node name="fullscreen" type="CheckBox" parent="CenterContainer/SettingsMenu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.34033898, 0.34033933, 0.34034002, 1)
+theme_override_font_sizes/font_size = 75
+button_pressed = true
+text = "Fullscreen"
+
+[node name="mainvolslider" type="HSlider" parent="CenterContainer/SettingsMenu"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+
+[node name="Label" type="Label" parent="CenterContainer/SettingsMenu/mainvolslider"]
+custom_minimum_size = Vector2(402, 55)
+layout_mode = 0
+offset_top = -16.0
+offset_right = 402.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Main Volume"
+horizontal_alignment = 1
+
+[node name="musicvolslider" type="HSlider" parent="CenterContainer/SettingsMenu"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+
+[node name="Label" type="Label" parent="CenterContainer/SettingsMenu/musicvolslider"]
+custom_minimum_size = Vector2(402, 55)
+layout_mode = 0
+offset_top = -16.0
+offset_right = 402.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="sfxvolslider" type="HSlider" parent="CenterContainer/SettingsMenu"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+
+[node name="Label" type="Label" parent="CenterContainer/SettingsMenu/sfxvolslider"]
+custom_minimum_size = Vector2(402, 55)
+layout_mode = 0
+offset_top = -16.0
+offset_right = 402.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "SFX Volume"
+horizontal_alignment = 1
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_j7ex8")
+volume_db = 16.421
+bus = &"Music"
+
+[node name="MenuSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_j7ex8")
+bus = &"SFX"
+
+[connection signal="pressed" from="CenterContainer/MainButtons/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CenterContainer/MainButtons/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CenterContainer/MainButtons/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CenterContainer/SettingsMenu/back" to="." method="_on_back_pressed"]
+[connection signal="toggled" from="CenterContainer/SettingsMenu/fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="value_changed" from="CenterContainer/SettingsMenu/mainvolslider" to="." method="_on_mainvolslider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/SettingsMenu/musicvolslider" to="." method="_on_musicvolslider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/SettingsMenu/sfxvolslider" to="." method="_on_sfxvolslider_value_changed"]
