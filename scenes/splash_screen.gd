@@ -1,4 +1,0 @@
-extends Node2D
-
-func _on_animation_player_animation_finished(_fade_out: StringName) -> void:
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

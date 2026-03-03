@@ -1,0 +1,116 @@
+[gd_scene load_steps=14 format=3 uid="uid://0ex1pw5ssaap"]
+
+[ext_resource type="Script" uid="uid://pf0ryoajcktx" path="res://scenes/levelselect.gd" id="1_a4q4k"]
+[ext_resource type="PackedScene" uid="uid://c7j6ya08sqtk4" path="res://scenes/level_select_button.tscn" id="1_vttqt"]
+[ext_resource type="Texture2D" uid="uid://bwt1x40pqstll" path="res://assets/UI/Icons/Nivel FenoTutorial.png" id="3_aaiik"]
+[ext_resource type="Texture2D" uid="uid://dvbf3hax6u334" path="res://assets/UI/Icons/NivelKim.png" id="4_rsw7q"]
+[ext_resource type="Texture2D" uid="uid://bxk0pkub88ucq" path="res://assets/UI/Icons/NivelArgalia.png" id="5_n4sav"]
+[ext_resource type="Texture2D" uid="uid://ct46iwb7i5ii2" path="res://assets/UI/butões/Voltar/Voltar Default.png" id="6_rsw7q"]
+[ext_resource type="Texture2D" uid="uid://bq0v2yypssiaf" path="res://assets/UI/butões/Voltar/Voltar Press.png" id="7_n4sav"]
+[ext_resource type="Texture2D" uid="uid://bnrbk31wx1b1l" path="res://assets/UI/butões/Voltar/Voltar Hover.png" id="8_ey6kh"]
+[ext_resource type="Texture2D" uid="uid://drxyxa8dubcge" path="res://assets/background/MenuBG.png" id="9_ey6kh"]
+[ext_resource type="Texture2D" uid="uid://byxdxpqf84yb5" path="res://assets/background/Duelos.png" id="9_n4sav"]
+[ext_resource type="AudioStream" uid="uid://clat14ttwu2i2" path="res://assets/sounds/music/Sea Waves - Sound Effect 4.mp3" id="11_x5apk"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_n4sav"]
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_ey6kh"]
+resource_local_to_scene = true
+events = [SubResource("InputEventKey_n4sav")]
+
+[node name="levelselect" type="Node2D"]
+script = ExtResource("1_a4q4k")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -4096
+texture_filter = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("9_ey6kh")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+z_index = 4096
+offset_left = 960.0
+offset_top = 297.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
+z_index = 4096
+layout_mode = 2
+theme_override_constants/h_separation = 15
+columns = 3
+
+[node name="LevelSelectButton1" parent="CenterContainer/GridContainer" instance=ExtResource("1_vttqt")]
+z_index = 4096
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/GridContainer/LevelSelectButton1"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 33.0
+offset_top = 33.0
+offset_right = 117.0
+offset_bottom = 117.0
+texture = ExtResource("3_aaiik")
+stretch_mode = 6
+
+[node name="LevelSelectButton2" parent="CenterContainer/GridContainer" instance=ExtResource("1_vttqt")]
+z_index = 4096
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/GridContainer/LevelSelectButton2"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.901
+offset_left = 33.0
+offset_top = 33.0
+offset_right = -33.0
+offset_bottom = -18.150024
+texture = ExtResource("4_rsw7q")
+stretch_mode = 6
+
+[node name="LevelSelectButton3" parent="CenterContainer/GridContainer" instance=ExtResource("1_vttqt")]
+z_index = 4096
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/GridContainer/LevelSelectButton3"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 33.0
+offset_top = 33.0
+offset_right = 117.0
+offset_bottom = 117.0
+texture = ExtResource("5_n4sav")
+stretch_mode = 6
+
+[node name="BackButton" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 1349.0
+offset_top = 782.00006
+offset_right = 1389.0
+offset_bottom = 814.00006
+scale = Vector2(4.5, 4.5)
+shortcut = SubResource("Shortcut_ey6kh")
+texture_normal = ExtResource("6_rsw7q")
+texture_pressed = ExtResource("7_n4sav")
+texture_hover = ExtResource("8_ey6kh")
+
+[node name="Duelos" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1386, 213)
+scale = Vector2(16, 16)
+texture = ExtResource("9_n4sav")
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_x5apk")
+volume_db = 16.421
+bus = &"Music"
+
+[connection signal="pressed" from="BackButton" to="CenterContainer/GridContainer/LevelSelectButton1" method="_on_back_button_pressed"]
